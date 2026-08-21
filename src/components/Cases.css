@@ -1,0 +1,32 @@
+.cases {
+  border-top: 1px solid var(--border);
+}
+
+.cases__heading {
+  max-width: 620px;
+  margin-bottom: 56px;
+}
+
+.cases__heading h2 {
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.cases__heading p {
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.cases__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 32px;
+}
+
+@media (max-width: 768px) {
+  .cases__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
