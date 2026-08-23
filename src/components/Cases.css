@@ -21,7 +21,9 @@
 .cases__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px 32px;
+  gap: 56px 40px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -29,4 +31,10 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
+}
+
+.cases__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
 }

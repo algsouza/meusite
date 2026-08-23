@@ -9,31 +9,45 @@ function About() {
       <div className="container about__grid">
         <div className="about__heading reveal">
           <span className="eyebrow">Sobre</span>
-          <h2>Mais de 20 anos transformando ideias em imagem.</h2>
+          <h2>Mais de 20 anos transformando ideias em imagem</h2>
         </div>
 
         <div className="about__body reveal">
           <p>
-            André Pizza é editor de vídeo e filmmaker com uma trajetória
-            construída dentro da televisão brasileira e de projetos
-            audiovisuais que vão do jornalismo à publicidade, das lives aos
-            documentários.
+            Andre Pizza é editor de vídeo, filmmaker e produtor audiovisual,
+            com uma trajetória construída ao longo de mais de 20 anos entre
+            televisão, publicidade, projetos institucionais e produções
+            especiais.
           </p>
           <p>
-            Foram 13 anos na <strong>RedeTV!</strong>, principalmente como
-            editor de promo, dando forma à linguagem visual de chamadas,
-            aberturas e campanhas. A experiência passa também por{' '}
-            <strong>Band</strong>, <strong>SBT</strong>, <strong>FAAP</strong>{' '}
-            e <strong>Lab3</strong>, além de projetos institucionais,
-            culturais e internacionais — incluindo uma iniciativa com
-            aprovação na Lei Rouanet, reforçando uma atuação que também
-            dialoga com projetos de dimensão cultural.
+            Sua experiência inclui passagens por grandes emissoras
+            brasileiras, como <strong>RedeTV!</strong>, <strong>Band</strong>{' '}
+            e <strong>SBT</strong>, atuando em diferentes etapas da produção
+            audiovisual, da edição à construção da narrativa e finalização.
           </p>
           <p>
-            Atualmente, André segue atuando nos Estados Unidos com
-            audiovisual e mídia, participando de transmissões ao vivo,
-            operação de telão, câmera e produção de conteúdo para redes
-            sociais.
+            Um capítulo importante dessa trajetória também está ligado à{' '}
+            <strong>FAAP</strong> — Fundação Armando Alvares Penteado,
+            instituição reconhecida por sua formação nas áreas de Cinema,
+            Rádio e TV. Ao trabalhar em projetos acadêmicos junto aos alunos,
+            Andre também teve a oportunidade de contribuir para a formação e
+            o desenvolvimento de novas produções audiovisuais.
+          </p>
+          <p>
+            Ao longo da carreira, participou ainda de projetos de diferentes
+            formatos e alcances, incluindo publicidade, televisão,
+            entretenimento, dublagem e pós-produção de conteúdos destinados à
+            distribuição internacional.
+          </p>
+          <p>
+            Entre essas experiências estão trabalhos realizados em Israel,
+            além de projetos que ampliaram sua atuação para diferentes
+            linguagens e contextos dentro do audiovisual.
+          </p>
+          <p>
+            Mais do que reunir trabalhos, seu portfólio revela uma trajetória
+            marcada pela capacidade de transformar ideias em imagens, unindo
+            experiência técnica, olhar criativo e compreensão da narrativa.
           </p>
 
           <ul className="about__stats">
@@ -46,8 +60,8 @@ function About() {
               <span>anos na RedeTV!</span>
             </li>
             <li>
-              <strong>EUA</strong>
-              <span>atuação atual</span>
+              <strong>Israel</strong>
+              <span>projeto internacional</span>
             </li>
           </ul>
         </div>

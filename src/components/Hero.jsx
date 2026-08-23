@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './Hero.css'
 
-// Quando o vídeo do Higgsfield estiver pronto, adicione o arquivo em
-// public/video/hero.mp4 (ou .webm) — o player assume automaticamente.
-const HERO_VIDEO_SRC = null
+const HERO_VIDEO_SRC = '/video/hero-camera.mp4'
 
 function Hero() {
   const videoRef = useRef(null)
@@ -20,25 +18,31 @@ function Hero() {
   return (
     <section className="hero" id="topo">
       <div className="hero__bg">
-        {HERO_VIDEO_SRC ? (
-          <video
-            ref={videoRef}
-            className={`hero__video ${videoReady ? 'is-ready' : ''}`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-          >
-            <source src={HERO_VIDEO_SRC} type="video/mp4" />
-          </video>
-        ) : (
-          <div className="hero__placeholder" aria-hidden="true">
-            <div className="hero__grid" />
-            <div className="hero__glow" />
-            <div className="hero__scan" />
+        <div className="hero__backdrop" aria-hidden="true">
+          <div className="hero__grid" />
+          <div className="hero__glow" />
+          <div className="hero__glow--accent" />
+          <div className="hero__scan" />
+          <div className="hero__led hero__led--1" />
+          <div className="hero__led hero__led--2" />
+        </div>
+
+        {HERO_VIDEO_SRC && (
+          <div className="hero__video-wrap">
+            <video
+              ref={videoRef}
+              className={`hero__video ${videoReady ? 'is-ready' : ''}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+            >
+              <source src={HERO_VIDEO_SRC} type="video/mp4" />
+            </video>
           </div>
         )}
+
         <div className="hero__overlay" />
       </div>
 

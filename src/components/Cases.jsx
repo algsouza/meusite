@@ -5,6 +5,7 @@ import './Cases.css'
 
 function Cases() {
   const ref = useReveal()
+  const featuredCases = cases.filter((item) => item.featured)
 
   return (
     <section id="cases" className="cases" ref={ref}>
@@ -13,14 +14,13 @@ function Cases() {
           <span className="eyebrow">Cases</span>
           <h2>Trabalhos selecionados</h2>
           <p>
-            Uma seleção de projetos ao longo de mais de 20 anos de carreira —
-            da televisão aberta a campanhas publicitárias e produções
-            internacionais.
+            Uma seleção de projetos em televisão, publicidade, institucional
+            e videoclipes.
           </p>
         </div>
 
         <div className="cases__grid">
-          {cases.map((item, index) => (
+          {featuredCases.map((item, index) => (
             <div
               className="reveal"
               key={item.id}
@@ -29,6 +29,12 @@ function Cases() {
               <CaseCard item={item} />
             </div>
           ))}
+        </div>
+
+        <div className="cases__cta reveal">
+          <a href="#" className="btn btn--ghost">
+            Explorar Portfólio Completo
+          </a>
         </div>
       </div>
     </section>
