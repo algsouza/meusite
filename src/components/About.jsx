@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal'
+import andrePhoto from '../assets/andre-photo.png'
 import './About.css'
 
 function About() {
@@ -8,8 +9,16 @@ function About() {
     <section id="sobre" className="about" ref={ref}>
       <div className="container about__grid">
         <div className="about__heading reveal">
-          <span className="eyebrow">Sobre</span>
-          <h2>Mais de 20 anos transformando ideias em imagem</h2>
+          <div className="about__photo-frame" aria-hidden="true">
+            <div className="about__photo-glow" />
+            <div className="about__photo">
+              <img src={andrePhoto} alt="" className="about__photo-img" />
+            </div>
+          </div>
+          <div className="about__heading-text">
+            <span className="eyebrow">Sobre</span>
+            <h2>Mais de 20 anos transformando ideias em imagem</h2>
+          </div>
         </div>
 
         <div className="about__body reveal">

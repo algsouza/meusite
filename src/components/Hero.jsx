@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './Hero.css'
 
-const HERO_VIDEO_SRC = '/video/hero-camera.mp4'
+const HERO_VIDEO_SRC = '/video/hero-laptop.mp4'
 
 function Hero() {
   const videoRef = useRef(null)

@@ -31,3 +31,40 @@
   color: var(--text);
   max-width: 480px;
 }
+
+.contact__socials {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+}
+
+.contact__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: all 0.25s ease;
+}
+
+.contact__social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact__socials li:nth-child(odd) .contact__social-link:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.contact__socials li:nth-child(even) .contact__social-link:hover {
+  border-color: var(--accent-blue-border);
+  color: var(--accent-blue);
+  background: var(--accent-blue-dim);
+}
