@@ -95,6 +95,7 @@ meusite/
 
 ## Deploy
 
+- **Local Dev:** http://localhost:5173
 - **Platform:** Vercel (connected to GitHub)
 - **Branch:** main
 - **Build:** npm run build
