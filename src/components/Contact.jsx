@@ -34,7 +34,7 @@ const socials = [
   },
   {
     label: 'Email',
-    href: 'mailto:ags.andrepizza@gmail.com',
+    href: 'mailto:sg.andresouza@gmail.com',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -56,8 +56,8 @@ function Contact() {
           <br />
           ideia em imagem.
         </h2>
-        <a href="mailto:ags.andrepizza@gmail.com" className="contact__email">
-          ags.andrepizza@gmail.com
+        <a href="mailto:sg.andresouza@gmail.com" className="contact__email">
+          sg.andresouza@gmail.com
         </a>
         <p className="contact__note">
           Agências, produtoras e marcas — disponível para projetos

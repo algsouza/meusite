@@ -48,7 +48,7 @@ function Hero() {
 
       <div className="container hero__content">
         <span className="hero__eyebrow">Editor de Vídeo · Filmmaker</span>
-        <h1>André Pizza</h1>
+        <h1>André Souza</h1>
         <p className="hero__tagline">
           Experiência, criatividade e linguagem visual para transformar ideias
           em imagens.

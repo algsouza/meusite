@@ -13,7 +13,7 @@ function Nav() {
     <header className="nav">
       <div className="container nav__inner">
         <a href="#" className="nav__logo">
-          Andre Pizza
+          André Souza
         </a>
         <nav className="nav__links">
           {links.map((link) => (

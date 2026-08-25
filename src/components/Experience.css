@@ -34,6 +34,10 @@
   padding-top: 4px;
 }
 
+.experience__content {
+  min-width: 0;
+}
+
 .experience__content h3 {
   margin-bottom: 6px;
 }
@@ -51,10 +55,156 @@
   max-width: 620px;
 }
 
+.experience__case {
+  margin-top: 4px;
+}
+
+.experience__case .experience__description {
+  margin-bottom: 14px;
+}
+
+.experience__case .experience__description:last-of-type {
+  margin-bottom: 0;
+}
+
+.experience__video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  max-width: 720px;
+  margin-top: 24px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+}
+
+.experience__video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.experience__gallery {
+  margin-top: 40px;
+}
+
+.experience__gallery-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.experience__highlight {
+  margin-top: 28px;
+  padding: 24px;
+  max-width: 620px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-raised);
+}
+
+.experience__highlight-eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.experience__highlight-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text-h);
+  font-family: var(--heading);
+  margin: 0 0 4px;
+}
+
+.experience__highlight-subtitle {
+  font-size: 13px;
+  color: var(--accent);
+  margin: 0 0 8px;
+}
+
+.experience__highlight-credits {
+  font-size: 13px;
+  color: var(--text);
+  margin: 0;
+}
+
+.experience__highlight-videos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.experience__highlight-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.experience__highlight-video iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.experience__highlight-photos {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.experience__highlight-photos img {
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.experience__highlight-photos img:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-border);
+}
+
 @media (max-width: 768px) {
   .experience__timeline li {
     grid-template-columns: 1fr;
     gap: 8px;
     padding: 24px 0;
+  }
+
+  .experience__video {
+    margin-top: 20px;
+  }
+
+  .experience__gallery {
+    margin-top: 32px;
+  }
+
+  .experience__highlight {
+    padding: 18px;
+    margin-top: 24px;
+  }
+
+  .experience__highlight-videos {
+    grid-template-columns: 1fr;
+  }
+
+  .experience__highlight-photos img {
+    width: calc(50% - 6px);
+    height: 90px;
   }
 }

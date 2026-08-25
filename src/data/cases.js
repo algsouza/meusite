@@ -188,10 +188,10 @@ export const cases = [
   {
     id: 'ia-novas-linguagens',
     title: 'IA / Novas Linguagens',
-    client: 'Andre Pizza',
+    client: 'André Souza',
     category: 'IA / NOVAS LINGUAGENS',
     description:
-      'Experimentações audiovisuais com inteligência artificial — criação de imagens e vídeos, novas possibilidades narrativas e processo criativo, integrando a experiência audiovisual de Andre Pizza com novas tecnologias.',
+      'Experimentações audiovisuais com inteligência artificial — criação de imagens e vídeos, novas possibilidades narrativas e processo criativo, integrando a experiência audiovisual de André Souza com novas tecnologias.',
     role: 'Placeholder — atuação a ser detalhada.',
     video: null,
     thumbnail: null,
