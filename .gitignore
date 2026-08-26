@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Large local-only assets (not used by the site)
+public/fotos Redetv/video fast ilha de edicao.MP4
