@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import './Contact.css'
 
@@ -34,7 +35,7 @@ const socials = [
   },
   {
     label: 'Email',
-    href: 'mailto:sg.andresouza@gmail.com',
+    href: 'mailto:contato@andresouzafilms.com',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="5" width="18" height="14" rx="2" />
@@ -44,41 +45,193 @@ const socials = [
   },
 ]
 
+const DESTINATIONS = {
+  contato: {
+    email: 'contato@andresouzafilms.com',
+    subjectPrefix: 'Novo contato pelo site',
+    messagePlaceholder: 'Conte um pouco sobre o seu projeto...',
+  },
+  orcamento: {
+    email: 'orcamento@andresouzafilms.com',
+    subjectPrefix: 'Solicitação de orçamento',
+    messagePlaceholder: 'Descreva o escopo, prazo e formato do projeto...',
+  },
+}
+
+const EMPTY_FORM = { name: '', email: '', phone: '', message: '' }
+
 function Contact() {
   const ref = useReveal()
+  const [formType, setFormType] = useState('contato')
+  const [form, setForm] = useState(EMPTY_FORM)
+  const [status, setStatus] = useState('idle')
+
+  const destination = DESTINATIONS[formType]
+
+  function handleChange(field) {
+    return (e) => setForm((f) => ({ ...f, [field]: e.target.value }))
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    if (!e.target.checkValidity()) {
+      e.target.reportValidity()
+      return
+    }
+
+    const subject = `${destination.subjectPrefix} — ${form.name}`
+    const bodyLines = [
+      `Nome: ${form.name}`,
+      `E-mail: ${form.email}`,
+      form.phone ? `Telefone: ${form.phone}` : null,
+      '',
+      form.message,
+    ].filter((line) => line !== null)
+
+    const mailto = `mailto:${destination.email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(bodyLines.join('\n'))}`
+
+    window.location.href = mailto
+    setStatus('sent')
+    setForm(EMPTY_FORM)
+  }
+
+  function handleTypeChange(type) {
+    setFormType(type)
+    setStatus('idle')
+  }
 
   return (
     <section id="contato" className="contact" ref={ref}>
       <div className="container contact__inner reveal">
-        <span className="eyebrow">Contato</span>
-        <h2>
-          Vamos transformar sua próxima
-          <br />
-          ideia em imagem.
-        </h2>
-        <a href="mailto:sg.andresouza@gmail.com" className="contact__email">
-          sg.andresouza@gmail.com
-        </a>
-        <p className="contact__note">
-          Agências, produtoras e marcas — disponível para projetos
-          audiovisuais no Brasil e nos Estados Unidos.
-        </p>
+        <div className="contact__intro">
+          <img
+            src="/header/logo-header-orange.png"
+            alt=""
+            aria-hidden="true"
+            className="contact__mark"
+          />
+          <span className="eyebrow">Contato</span>
+          <h2>
+            Vamos transformar sua próxima
+            <br />
+            ideia em imagem.
+          </h2>
+          <a href="mailto:contato@andresouzafilms.com" className="contact__email">
+            contato@andresouzafilms.com
+          </a>
+          <p className="contact__note">
+            Agências, produtoras e marcas — disponível para projetos
+            audiovisuais no Brasil e nos Estados Unidos.
+          </p>
 
-        <ul className="contact__socials">
-          {socials.map((social) => (
-            <li key={social.label}>
-              <a
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="contact__social-link"
-              >
-                {social.icon}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <ul className="contact__socials">
+            {socials.map((social) => (
+              <li key={social.label}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="contact__social-link"
+                >
+                  {social.icon}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="contact__form-wrap">
+          <div className="contact__tabs" role="tablist" aria-label="Tipo de solicitação">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={formType === 'contato'}
+              className={`contact__tab${formType === 'contato' ? ' contact__tab--active' : ''}`}
+              onClick={() => handleTypeChange('contato')}
+            >
+              Contato
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={formType === 'orcamento'}
+              className={`contact__tab${formType === 'orcamento' ? ' contact__tab--active' : ''}`}
+              onClick={() => handleTypeChange('orcamento')}
+            >
+              Orçamento
+            </button>
+          </div>
+
+          <form className="contact__form" onSubmit={handleSubmit} noValidate>
+            <div className="contact__field">
+              <label htmlFor="contact-name">Nome</label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                value={form.name}
+                onChange={handleChange('name')}
+                placeholder="Seu nome"
+                autoComplete="name"
+              />
+            </div>
+
+            <div className="contact__field">
+              <label htmlFor="contact-email">E-mail</label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                value={form.email}
+                onChange={handleChange('email')}
+                placeholder="voce@email.com"
+                autoComplete="email"
+              />
+            </div>
+
+            <div className="contact__field">
+              <label htmlFor="contact-phone">Telefone <span>(opcional)</span></label>
+              <input
+                id="contact-phone"
+                name="phone"
+                type="tel"
+                value={form.phone}
+                onChange={handleChange('phone')}
+                placeholder="+55 (11) 90000-0000"
+                autoComplete="tel"
+              />
+            </div>
+
+            <div className="contact__field">
+              <label htmlFor="contact-message">Mensagem</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                required
+                rows={5}
+                value={form.message}
+                onChange={handleChange('message')}
+                placeholder={destination.messagePlaceholder}
+              />
+            </div>
+
+            <button type="submit" className="btn btn--primary contact__submit">
+              Enviar
+            </button>
+
+            {status === 'sent' && (
+              <p className="contact__status" role="status">
+                Abrindo seu aplicativo de e-mail para enviar a mensagem para{' '}
+                {destination.email}...
+              </p>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   )
