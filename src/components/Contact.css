@@ -186,10 +186,19 @@
   cursor: pointer;
 }
 
+.contact__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .contact__status {
   font-size: 13px;
   color: var(--accent-blue);
   margin: 0;
+}
+
+.contact__status--error {
+  color: var(--accent);
 }
 
 @media (max-width: 900px) {

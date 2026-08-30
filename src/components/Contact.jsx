@@ -72,29 +72,34 @@ function Contact() {
     return (e) => setForm((f) => ({ ...f, [field]: e.target.value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
+    if (status === 'sending') return
     if (!e.target.checkValidity()) {
       e.target.reportValidity()
       return
     }
 
-    const subject = `${destination.subjectPrefix} — ${form.name}`
-    const bodyLines = [
-      `Nome: ${form.name}`,
-      `E-mail: ${form.email}`,
-      form.phone ? `Telefone: ${form.phone}` : null,
-      '',
-      form.message,
-    ].filter((line) => line !== null)
+    setStatus('sending')
 
-    const mailto = `mailto:${destination.email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(bodyLines.join('\n'))}`
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, type: formType }),
+      })
 
-    window.location.href = mailto
-    setStatus('sent')
-    setForm(EMPTY_FORM)
+      const data = await res.json().catch(() => ({}))
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || 'Falha ao enviar mensagem.')
+      }
+
+      setStatus('sent')
+      setForm(EMPTY_FORM)
+    } catch (err) {
+      setStatus('error')
+    }
   }
 
   function handleTypeChange(type) {
@@ -107,7 +112,7 @@ function Contact() {
       <div className="container contact__inner reveal">
         <div className="contact__intro">
           <img
-            src="/header/logo-header-orange.png"
+            src="/header/logo-header-white.png"
             alt=""
             aria-hidden="true"
             className="contact__mark"
@@ -220,14 +225,23 @@ function Contact() {
               />
             </div>
 
-            <button type="submit" className="btn btn--primary contact__submit">
-              Enviar
+            <button
+              type="submit"
+              className="btn btn--primary contact__submit"
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? 'Enviando...' : 'Enviar'}
             </button>
 
             {status === 'sent' && (
               <p className="contact__status" role="status">
-                Abrindo seu aplicativo de e-mail para enviar a mensagem para{' '}
-                {destination.email}...
+                Mensagem enviada com sucesso! Obrigado pelo contato.
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="contact__status contact__status--error" role="alert">
+                Não foi possível enviar sua mensagem agora. Tente novamente em
+                instantes.
               </p>
             )}
           </form>

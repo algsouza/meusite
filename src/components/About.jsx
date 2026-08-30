@@ -23,7 +23,7 @@ function About() {
 
         <div className="about__body reveal">
           <p>
-            Andre Pizza é editor de vídeo, filmmaker e produtor audiovisual,
+            André Souza é editor de vídeo, filmmaker e produtor audiovisual,
             com uma trajetória construída ao longo de mais de 20 anos entre
             televisão, publicidade, projetos institucionais e produções
             especiais.

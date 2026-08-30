@@ -18,10 +18,10 @@ function Nav() {
         <a href="#" className="nav__logo" onClick={() => setMenuOpen(false)}>
           <img
             src="/header/logo-header-orange.png"
-            alt="André Souza"
+            alt="André Souza Filmes"
             className="nav__logo-icon"
           />
-          <span className="nav__logo-text">André Souza</span>
+          <span className="nav__logo-text">André Souza Filmes</span>
         </a>
         <nav className={`nav__links${menuOpen ? ' nav__links--open' : ''}`}>
           {links.map((link) => (
