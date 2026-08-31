@@ -67,7 +67,12 @@ export default async function handler(req, res) {
     if (!resendRes.ok) {
       const errBody = await resendRes.text().catch(() => '')
       console.error('[api/contact] Resend API responded with an error:', resendRes.status, errBody)
-      return res.status(502).json({ ok: false, error: 'Falha ao enviar e-mail. Tente novamente.' })
+      // TEMP DEBUG — remove `debug` field once the Resend error is diagnosed.
+      return res.status(502).json({
+        ok: false,
+        error: 'Falha ao enviar e-mail. Tente novamente.',
+        debug: { status: resendRes.status, body: errBody, keyLen: apiKey.length, keyPrefix: apiKey.slice(0, 10), keySuffix: apiKey.slice(-6) },
+      })
     }
 
     return res.status(200).json({ ok: true })
