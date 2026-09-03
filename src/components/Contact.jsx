@@ -90,7 +90,7 @@ function Contact() {
       })
 
       const data = await res.json().catch(() => ({}))
-
+      console.log('[Contact] API response', res.status, data)
       if (!res.ok || !data.ok) {
         throw new Error(data.error || 'Falha ao enviar mensagem.')
       }
